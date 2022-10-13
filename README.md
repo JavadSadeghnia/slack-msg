@@ -1,5 +1,5 @@
 # slack-msg
-create a slack workspace
+#1 create a slack workspace
 
 create a bot in your slack workspace => replace your bot token into the code "xoxb-4208929916324-4206536588322-bzN4PIMO44UPVM0LsIHz6tbj"
 

@@ -1,14 +1,22 @@
-const axios = require('axios');
-const slackToken = 'xoxb-4208929916324-4206536588322-bzN4PIMO44UPVM0LsIHz6tbj';
+const { WebClient, LogLevel } = require("@slack/web-api");
+const client = new WebClient("xoxb-4208929916324-4206536588322-bzN4PIMO44UPVM0LsIHz6tbj", {
 
-run().catch(err => console.log(err));
+  logLevel: LogLevel.DEBUG
+});
 
-async function run() {
-  const url = 'https://slack.com/api/chat.postMessage';
-  const res = await axios.post(url, {
-    channel: '#general',
-    text: 'Hello, World!'
-  }, { headers: { authorization: `Bearer ${slackToken}` } });
+const channelId = "C0467PK7ZT8";
+const userId = "U0462BKP8QK";
 
-  console.log('Done', res.data);
+try {
+
+  const result =  client.chat.postEphemeral({
+    channel: channelId,
+    user: userId,
+    text: "This is a text message from Javascript!"
+  });
+
+  console.log(result);
+}
+catch (error) {
+  console.error(error);
 }
